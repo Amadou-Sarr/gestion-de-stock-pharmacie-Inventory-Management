@@ -54,7 +54,7 @@ public class controller_auth implements Initializable, ControlledScreen {
 
         try {
             Class.forName("com.mysql.jdbc.Driver") ;
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/gestion_stock_memoire", "root", "") ;
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/gestion_stock", "root", "") ;
             Statement stmt = conn.createStatement() ;
             String query = "select droit_acces from Personnel where login ='"+login+"'  AND  mot_de_passe  ='"+password+"' ";
             ResultSet rs = stmt.executeQuery(query) ;
@@ -88,13 +88,9 @@ public class controller_auth implements Initializable, ControlledScreen {
                     myController.setScreen("Acceuil_emp");
                 }
 
-
-
             }
             else
             {
-
-
                 alert.setContentText("Veuillez Entrer des données Valides");
                 alert.showAndWait();
             }
@@ -104,8 +100,6 @@ public class controller_auth implements Initializable, ControlledScreen {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
     }
 
     }

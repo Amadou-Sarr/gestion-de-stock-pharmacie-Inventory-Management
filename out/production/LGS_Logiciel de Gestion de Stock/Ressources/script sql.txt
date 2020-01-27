@@ -8,19 +8,19 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
--- Schema Gestion_Stock_MEMOIRE
+-- Schema Gestion_Stock
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema Gestion_Stock_MEMOIRE
+-- Schema Gestion_Stock
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `Gestion_Stock_MEMOIRE` DEFAULT CHARACTER SET utf8 ;
-USE `Gestion_Stock_MEMOIRE` ;
+CREATE SCHEMA IF NOT EXISTS `Gestion_Stock` DEFAULT CHARACTER SET utf8 ;
+USE `Gestion_Stock` ;
 
 -- -----------------------------------------------------
--- Table `Gestion_Stock_MEMOIRE`.`Personnel`
+-- Table `Gestion_Stock`.`Personnel`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Gestion_Stock_MEMOIRE`.`Personnel` (
+CREATE TABLE IF NOT EXISTS `Gestion_Stock`.`Personnel` (
   `idPersonnel` INT NOT NULL AUTO_INCREMENT,
   `login` VARCHAR(255) NULL,
   `mot de passe` VARCHAR(255) NULL,
@@ -31,9 +31,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Gestion_Stock_MEMOIRE`.`Pharmacien`
+-- Table `Gestion_Stock`.`Pharmacien`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Gestion_Stock_MEMOIRE`.`Pharmacien` (
+CREATE TABLE IF NOT EXISTS `Gestion_Stock`.`Pharmacien` (
   `idPharmacien` INT NOT NULL AUTO_INCREMENT,
   `nom` VARCHAR(255) NULL,
   `prenom` VARCHAR(255) NULL,
@@ -43,16 +43,16 @@ CREATE TABLE IF NOT EXISTS `Gestion_Stock_MEMOIRE`.`Pharmacien` (
   INDEX `fk_Pharmacien_Personnel_idx` (`Personnel_idPersonnel` ASC),
   CONSTRAINT `fk_Pharmacien_Personnel`
     FOREIGN KEY (`Personnel_idPersonnel`)
-    REFERENCES `Gestion_Stock_MEMOIRE`.`Personnel` (`idPersonnel`)
+    REFERENCES `Gestion_Stock`.`Personnel` (`idPersonnel`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Gestion_Stock_MEMOIRE`.`Inventaire`
+-- Table `Gestion_Stock`.`Inventaire`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Gestion_Stock_MEMOIRE`.`Inventaire` (
+CREATE TABLE IF NOT EXISTS `Gestion_Stock`.`Inventaire` (
   `idInventaire` INT NOT NULL AUTO_INCREMENT,
   `categorie` VARCHAR(255) NULL,
   `famille` VARCHAR(255) NULL,
@@ -63,16 +63,16 @@ CREATE TABLE IF NOT EXISTS `Gestion_Stock_MEMOIRE`.`Inventaire` (
   INDEX `fk_Inventaire_Pharmacien1_idx` (`Pharmacien_idPharmacien` ASC, `Pharmacien_Personnel_idPersonnel` ASC),
   CONSTRAINT `fk_Inventaire_Pharmacien1`
     FOREIGN KEY (`Pharmacien_idPharmacien` , `Pharmacien_Personnel_idPersonnel`)
-    REFERENCES `Gestion_Stock_MEMOIRE`.`Pharmacien` (`idPharmacien` , `Personnel_idPersonnel`)
+    REFERENCES `Gestion_Stock`.`Pharmacien` (`idPharmacien` , `Personnel_idPersonnel`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Gestion_Stock_MEMOIRE`.`Fournisseur`
+-- Table `Gestion_Stock`.`Fournisseur`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Gestion_Stock_MEMOIRE`.`Fournisseur` (
+CREATE TABLE IF NOT EXISTS `Gestion_Stock`.`Fournisseur` (
   `idFournisseur` INT NOT NULL AUTO_INCREMENT,
   `nomFournisseur` VARCHAR(255) NULL,
   `codeFournisseur` INT NULL,
@@ -84,9 +84,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Gestion_Stock_MEMOIRE`.`Livraison`
+-- Table `Gestion_Stock`.`Livraison`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Gestion_Stock_MEMOIRE`.`Livraison` (
+CREATE TABLE IF NOT EXISTS `Gestion_Stock`.`Livraison` (
   `idLivraison` INT NOT NULL AUTO_INCREMENT,
   `dateLivraison` DATE NULL,
   `lot` INT NULL,
@@ -96,16 +96,16 @@ CREATE TABLE IF NOT EXISTS `Gestion_Stock_MEMOIRE`.`Livraison` (
   INDEX `fk_Livraison_Fournisseur1_idx` (`Fournisseur_idFournisseur` ASC),
   CONSTRAINT `fk_Livraison_Fournisseur1`
     FOREIGN KEY (`Fournisseur_idFournisseur`)
-    REFERENCES `Gestion_Stock_MEMOIRE`.`Fournisseur` (`idFournisseur`)
+    REFERENCES `Gestion_Stock`.`Fournisseur` (`idFournisseur`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Gestion_Stock_MEMOIRE`.`Medicaments`
+-- Table `Gestion_Stock`.`Medicaments`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Gestion_Stock_MEMOIRE`.`Medicaments` (
+CREATE TABLE IF NOT EXISTS `Gestion_Stock`.`Medicaments` (
   `idMedicaments` INT NOT NULL AUTO_INCREMENT,
   `reference` INT NULL,
   `libelle` VARCHAR(255) NULL,
@@ -120,21 +120,21 @@ CREATE TABLE IF NOT EXISTS `Gestion_Stock_MEMOIRE`.`Medicaments` (
   INDEX `fk_Medicaments_Livraison1_idx` (`Livraison_idLivraison` ASC),
   CONSTRAINT `fk_Medicaments_Inventaire1`
     FOREIGN KEY (`Inventaire_idInventaire`)
-    REFERENCES `Gestion_Stock_MEMOIRE`.`Inventaire` (`idInventaire`)
+    REFERENCES `Gestion_Stock`.`Inventaire` (`idInventaire`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Medicaments_Livraison1`
     FOREIGN KEY (`Livraison_idLivraison`)
-    REFERENCES `Gestion_Stock_MEMOIRE`.`Livraison` (`idLivraison`)
+    REFERENCES `Gestion_Stock`.`Livraison` (`idLivraison`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Gestion_Stock_MEMOIRE`.`Alertes`
+-- Table `Gestion_Stock`.`Alertes`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Gestion_Stock_MEMOIRE`.`Alertes` (
+CREATE TABLE IF NOT EXISTS `Gestion_Stock`.`Alertes` (
   `idAlertes` INT NOT NULL AUTO_INCREMENT,
   `date` DATE NULL,
   `details` VARCHAR(255) NULL,
@@ -145,16 +145,16 @@ CREATE TABLE IF NOT EXISTS `Gestion_Stock_MEMOIRE`.`Alertes` (
   INDEX `fk_Alertes_Medicaments1_idx` (`Medicaments_idMedicaments` ASC, `Medicaments_Livraison_idLivraison` ASC),
   CONSTRAINT `fk_Alertes_Medicaments1`
     FOREIGN KEY (`Medicaments_idMedicaments` , `Medicaments_Livraison_idLivraison`)
-    REFERENCES `Gestion_Stock_MEMOIRE`.`Medicaments` (`idMedicaments` , `Livraison_idLivraison`)
+    REFERENCES `Gestion_Stock`.`Medicaments` (`idMedicaments` , `Livraison_idLivraison`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Gestion_Stock_MEMOIRE`.`Commande`
+-- Table `Gestion_Stock`.`Commande`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Gestion_Stock_MEMOIRE`.`Commande` (
+CREATE TABLE IF NOT EXISTS `Gestion_Stock`.`Commande` (
   `idCommande` INT NOT NULL AUTO_INCREMENT,
   `date` DATE NULL,
   `quantite` INT NULL,
@@ -163,9 +163,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Gestion_Stock_MEMOIRE`.`Fiche Statistique`
+-- Table `Gestion_Stock`.`Fiche Statistique`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Gestion_Stock_MEMOIRE`.`Fiche Statistique` (
+CREATE TABLE IF NOT EXISTS `Gestion_Stock`.`Fiche Statistique` (
   `idFicheStatistique` INT NOT NULL AUTO_INCREMENT,
   `weeklystat` INT NULL,
   `monthlystat` INT NULL,
@@ -175,16 +175,16 @@ CREATE TABLE IF NOT EXISTS `Gestion_Stock_MEMOIRE`.`Fiche Statistique` (
   INDEX `fk_Fiche Statistique_Medicaments1_idx` (`Medicaments_idMedicaments` ASC),
   CONSTRAINT `fk_Fiche Statistique_Medicaments1`
     FOREIGN KEY (`Medicaments_idMedicaments`)
-    REFERENCES `Gestion_Stock_MEMOIRE`.`Medicaments` (`idMedicaments`)
+    REFERENCES `Gestion_Stock`.`Medicaments` (`idMedicaments`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Gestion_Stock_MEMOIRE`.`Vente`
+-- Table `Gestion_Stock`.`Vente`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Gestion_Stock_MEMOIRE`.`Vente` (
+CREATE TABLE IF NOT EXISTS `Gestion_Stock`.`Vente` (
   `idVente` INT NOT NULL AUTO_INCREMENT,
   `date` DATE NULL,
   `montant` DOUBLE NULL,
@@ -194,9 +194,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Gestion_Stock_MEMOIRE`.`Vente_has_Medicaments`
+-- Table `Gestion_Stock`.`Vente_has_Medicaments`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Gestion_Stock_MEMOIRE`.`Vente_has_Medicaments` (
+CREATE TABLE IF NOT EXISTS `Gestion_Stock`.`Vente_has_Medicaments` (
   `Vente_idVente` INT NOT NULL,
   `Medicaments_idMedicaments` INT NOT NULL,
   PRIMARY KEY (`Vente_idVente`, `Medicaments_idMedicaments`),
@@ -204,21 +204,21 @@ CREATE TABLE IF NOT EXISTS `Gestion_Stock_MEMOIRE`.`Vente_has_Medicaments` (
   INDEX `fk_Vente_has_Medicaments_Vente1_idx` (`Vente_idVente` ASC),
   CONSTRAINT `fk_Vente_has_Medicaments_Vente1`
     FOREIGN KEY (`Vente_idVente`)
-    REFERENCES `Gestion_Stock_MEMOIRE`.`Vente` (`idVente`)
+    REFERENCES `Gestion_Stock`.`Vente` (`idVente`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Vente_has_Medicaments_Medicaments1`
     FOREIGN KEY (`Medicaments_idMedicaments`)
-    REFERENCES `Gestion_Stock_MEMOIRE`.`Medicaments` (`idMedicaments`)
+    REFERENCES `Gestion_Stock`.`Medicaments` (`idMedicaments`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Gestion_Stock_MEMOIRE`.`Commande_has_Medicaments`
+-- Table `Gestion_Stock`.`Commande_has_Medicaments`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Gestion_Stock_MEMOIRE`.`Commande_has_Medicaments` (
+CREATE TABLE IF NOT EXISTS `Gestion_Stock`.`Commande_has_Medicaments` (
   `Commande_idCommande` INT NOT NULL,
   `Medicaments_idMedicaments` INT NOT NULL,
   `Medicaments_Livraison_idLivraison` INT NOT NULL,
@@ -227,12 +227,12 @@ CREATE TABLE IF NOT EXISTS `Gestion_Stock_MEMOIRE`.`Commande_has_Medicaments` (
   INDEX `fk_Commande_has_Medicaments_Commande1_idx` (`Commande_idCommande` ASC),
   CONSTRAINT `fk_Commande_has_Medicaments_Commande1`
     FOREIGN KEY (`Commande_idCommande`)
-    REFERENCES `Gestion_Stock_MEMOIRE`.`Commande` (`idCommande`)
+    REFERENCES `Gestion_Stock`.`Commande` (`idCommande`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Commande_has_Medicaments_Medicaments1`
     FOREIGN KEY (`Medicaments_idMedicaments` , `Medicaments_Livraison_idLivraison`)
-    REFERENCES `Gestion_Stock_MEMOIRE`.`Medicaments` (`idMedicaments` , `Livraison_idLivraison`)
+    REFERENCES `Gestion_Stock`.`Medicaments` (`idMedicaments` , `Livraison_idLivraison`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

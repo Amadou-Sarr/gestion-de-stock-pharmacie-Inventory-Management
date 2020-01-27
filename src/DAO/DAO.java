@@ -23,7 +23,7 @@ public class DAO {
 
     public static void connect() {
         try {
-            String url = "jdbc:mysql://localhost:3306/gestion_stock_memoire";
+            String url = "jdbc:mysql://localhost:3306/gestion_stock";
             String user = "root", pw = "";
             if (cnx == null || cnx.isClosed()) {
                 Class.forName("com.mysql.jdbc.Driver");
@@ -37,7 +37,7 @@ public class DAO {
     public static void close() throws Exception {
 
         try {
-            DriverManager.getConnection("jdbc:mysql://localhost:3306/gestion_stock_memoire;shutdown");
+            DriverManager.getConnection("jdbc:mysql://localhost:3306/gestion_stock;shutdown");
             cnx.close();
         } catch (Exception e) {
             e.printStackTrace();

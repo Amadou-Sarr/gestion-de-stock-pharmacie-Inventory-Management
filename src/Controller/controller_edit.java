@@ -141,7 +141,7 @@ public class controller_edit implements Initializable, ControlledScreen {
 
 
             Class.forName("com.mysql.jdbc.Driver") ;
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/gestion_stock_memoire", "root", "") ;
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/gestion_stock", "root", "") ;
             Statement stmt = conn.createStatement();
 
             stmt.executeUpdate("INSERT INTO Medicaments (reference,libelle,prix,qte_en_stock,qte_min,date_exp,Inventaire_idInventaire,Livraison_idLivraison) VALUES (" +ref+ ",'" + lib + "'," + prix + "," + qtestock + "," + qtemin + "," + prix + "," + txt_dateExp + "," + 1 +"," + 1 +" ) WHERE id ="+id);

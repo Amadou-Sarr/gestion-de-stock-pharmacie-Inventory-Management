@@ -107,7 +107,7 @@ public class controller_inventaire implements Initializable, ControlledScreen {
         try {
 
             Class.forName("com.mysql.jdbc.Driver") ;
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/gestion_stock_memoire", "root", "") ;
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/gestion_stock", "root", "") ;
             Statement stmt = conn.createStatement() ;
             String query = "SELECT Medicaments.idMedicaments, Medicaments.reference, Medicaments.libelle, Inventaire.categorie, Medicaments.prix, Medicaments.date_exp, Medicaments.qte_en_stock, Medicaments.qte_min, Inventaire.numero_etagere  FROM  `Medicaments` JOIN Inventaire ON Medicaments.Inventaire_idInventaire = Inventaire.idInventaire";
             ResultSet rs = stmt.executeQuery(query) ;

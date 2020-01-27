@@ -88,7 +88,7 @@ public class controller_vente implements Initializable, ControlledScreen {
         try {
 
             Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/gestion_stock_memoire", "root", "");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/gestion_stock", "root", "");
             Statement stmt = conn.createStatement();
             String query = "SELECT qte_en_stock, qte_min, prix  FROM  `Medicaments` WHERE reference = " + ref + " ";
             ResultSet rs = stmt.executeQuery(query);
@@ -120,7 +120,7 @@ public class controller_vente implements Initializable, ControlledScreen {
 
 
             Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/gestion_stock_memoire", "root", "");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/gestion_stock", "root", "");
             Statement stmt = conn.createStatement();
 
             stmt.executeUpdate("INSERT INTO Vente (date,montant,nombreMedicaments) VALUES('" + date + "','" + total + "','" + decrementer + "'");
