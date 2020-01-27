@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="529.0" prefWidth="899.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.controller_commande">
+   <children>
+      <SplitPane dividerPositions="0.8462998102466793" layoutX="261.0" layoutY="230.0" orientation="VERTICAL" prefHeight="529.0" prefWidth="899.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <SplitPane dividerPositions="0.5173184357541899" layoutX="178.0" layoutY="107.0" prefHeight="438.0" prefWidth="897.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                           <children>
+                              <Label layoutX="189.0" layoutY="14.0" text="COMMANDE">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <JFXTextField layoutX="170.0" layoutY="76.0" prefHeight="25.0" prefWidth="220.0" />
+                              <JFXTextField layoutX="170.0" layoutY="126.0" prefHeight="25.0" prefWidth="220.0" />
+                              <ChoiceBox fx:id="choiceBox_fournisseur" layoutX="170.0" layoutY="181.0" onMouseClicked="#ListerFournisseur" prefHeight="25.0" prefWidth="220.0" />
+                              <Label layoutX="56.0" layoutY="80.0" prefHeight="17.0" prefWidth="67.0" text="Reference">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="56.0" layoutY="129.0" prefHeight="17.0" prefWidth="67.0" text="qantité">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="56.0" layoutY="183.0" prefHeight="20.0" prefWidth="78.0" text="Fournisseur">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <JFXTreeTableView fx:id="table_Fournisseur" layoutX="-1.0" layoutY="234.0" prefHeight="206.0" prefWidth="460.0">
+                                 <columns>
+                                    <TreeTableColumn prefWidth="172.0" text="Telephone" />
+                                    <TreeTableColumn prefWidth="167.0" text="Email" />
+                                    <TreeTableColumn prefWidth="120.0" text="Adresse" />
+                                 </columns>
+                              </JFXTreeTableView>
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                           <children>
+                              <Label layoutX="193.0" layoutY="14.0" text="ALERTES">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <TableView fx:id="table_alerte" layoutY="56.0" prefHeight="381.0" prefWidth="429.0">
+                                <columns>
+                                  <TableColumn fx:id="reference" prefWidth="136.0" text="Reference" />
+                                  <TableColumn fx:id="date" prefWidth="147.0" text="Date Alerte" />
+                                    <TableColumn fx:id="qte_restante" prefWidth="145.0" text="Qantité Restante" />
+                                </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                    </items>
+                  </SplitPane>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <ImageView fitHeight="78.0" fitWidth="110.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Ressources/logo%20test.gif" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="78.0" fitWidth="102.0" layoutX="110.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Ressources/home.png" />
+                     </image>
+                  </ImageView>
+                  <JFXButton fx:id="btnHome" layoutX="108.0" onAction="#gotoHome" prefHeight="78.0" prefWidth="81.0" ripplerFill="#252786" text=" " />
+                  <JFXButton fx:id="btnValider" buttonType="RAISED" defaultButton="true" layoutX="324.0" layoutY="22.0" onAction="#valider" prefHeight="33.0" prefWidth="146.0" ripplerFill="#13136f" style="-fx-border-color: green;" text="Valider Commande" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

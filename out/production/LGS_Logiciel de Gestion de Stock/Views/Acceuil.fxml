@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="594.0" prefWidth="713.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.controller_acceuil">
+   <children>
+      <ImageView fitHeight="474.0" fitWidth="733.0" layoutY="123.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Ressources/acceuil.jpg" />
+         </image>
+      </ImageView>
+      <Pane layoutX="-6.0" layoutY="-2.0" prefHeight="161.0" prefWidth="721.0" style="-fx-background-color: white;">
+         <children>
+            <ImageView fitHeight="90.0" fitWidth="82.0" layoutX="14.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Ressources/home.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="65.0" fitWidth="65.0" layoutX="137.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Ressources/inventory.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="72.0" fitWidth="72.0" layoutX="248.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Ressources/approv1.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="65.0" fitWidth="72.0" layoutX="376.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Ressources/selling2.png" />
+               </image>
+            </ImageView>
+            <Pane prefHeight="28.0" prefWidth="721.0" style="-fx-background-color: blue;" />
+            <Label layoutX="23.0" layoutY="137.0" prefHeight="17.0" prefWidth="65.0" text="Home">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="113.0" layoutY="137.0" prefHeight="20.0" prefWidth="114.0" text="Gestion Inventaire">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="240.0" layoutY="137.0" prefHeight="20.0" prefWidth="124.0" text="Approvisionnement">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="btn_inventaire" layoutX="137.0" layoutY="59.0" onAction="#goto_inventaire" prefHeight="65.0" prefWidth="65.0" ripplerFill="#79bfc9" style="-fx-border-radius: 2000;" text=" " />
+            <Label layoutX="385.0" layoutY="137.0" prefHeight="17.0" prefWidth="48.0" text="Vendre">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="55.0" fitWidth="65.0" layoutX="495.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Ressources/command1.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="469.0" layoutY="137.0" text="Gestion Commande">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="55.0" fitWidth="72.0" layoutX="615.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Ressources/stat.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="615.0" layoutY="137.0" text="Statistiques">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="btn_approv" layoutX="249.0" layoutY="59.0" onAction="#goto_approvisionnement" prefHeight="65.0" prefWidth="71.0" ripplerFill="#79bfc9" style="-fx-border-radius: 2000;" text=" " />
+            <JFXButton fx:id="btn_vendre" layoutX="373.0" layoutY="59.0" onAction="#goto_vente" prefHeight="65.0" prefWidth="71.0" ripplerFill="#79bfc9" style="-fx-border-radius: 2000;" text=" " />
+            <JFXButton fx:id="btn_commande" layoutX="497.0" layoutY="59.0" onAction="#goto_commande" prefHeight="65.0" prefWidth="55.0" ripplerFill="#79bfc9" style="-fx-border-radius: 2000;" text=" " />
+            <JFXButton fx:id="btn_stat" layoutX="615.0" layoutY="59.0" onAction="#goto_statistique" prefHeight="65.0" prefWidth="55.0" ripplerFill="#79bfc9" style="-fx-border-radius: 2000;" text=" " />
+            <Pane layoutY="154.0" prefHeight="7.0" prefWidth="721.0" style="-fx-background-color: blue;" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

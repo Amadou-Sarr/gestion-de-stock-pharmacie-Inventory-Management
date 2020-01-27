@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<?import javafx.scene.control.TreeTableView?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="619.0" prefWidth="923.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.controller_inventaire">
+   <children>
+      <SplitPane dividerPositions="0.880064829821718" orientation="VERTICAL" prefHeight="570.0" prefWidth="923.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="921.0">
+               <children>
+                  <TableView fx:id="inventory" prefHeight="540.0" prefWidth="921.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <columns>
+                        <TableColumn fx:id="column_id" prefWidth="52.0" text="id" />
+                        <TableColumn fx:id="column_reference" prefWidth="119.0" text="Reference" />
+                        <TableColumn fx:id="column_libelle" prefWidth="67.0" text="libelle" />
+                        <TableColumn fx:id="column_categorie" prefWidth="87.0" text="Categorie" />
+                        <TableColumn fx:id="column_prix" prefWidth="89.0" text="Prix" />
+                        <TableColumn fx:id="column_exp" prefWidth="122.0" text="Date D'expiration" />
+                        <TableColumn fx:id="column_qtestock" prefWidth="114.0" text="Quantité en Stock" />
+                        <TableColumn fx:id="column_qtemin" prefWidth="131.0" text="Qte Minimale" />
+                        <TableColumn fx:id="column_etagere" prefWidth="139.0" text="N° Etagere" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="101.0" prefWidth="921.0" style="-fx-background-color: white;">
+               <children>
+                  <JFXButton fx:id="btn_modifier" buttonType="RAISED" defaultButton="true" layoutX="303.0" layoutY="16.0" onAction="#modifier" prefHeight="39.0" prefWidth="104.0" ripplerFill="#3121c6" text="MODIFIER" />
+                  <JFXButton fx:id="btn_delete" defaultButton="true" layoutX="534.0" layoutY="16.0" onAction="#delete" prefHeight="39.0" prefWidth="96.0" ripplerFill="#1c5cc9" text="SUPPRIMER" />
+                  <ImageView fitHeight="78.0" fitWidth="80.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Ressources/logo%20test.gif" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="71.0" fitWidth="80.0" layoutX="99.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Ressources/home.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="170.0" layoutY="43.0" prefHeight="25.0" prefWidth="39.0" text="Home">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <JFXButton fx:id="btn_goback" layoutX="96.0" layoutY="-1.0" onAction="#GoBackHome" prefHeight="71.0" prefWidth="76.0" text=" " />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
